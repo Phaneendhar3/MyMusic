@@ -300,7 +300,7 @@ fun MusicScreen() {
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
-                    text = "ప్రియరాగాలు",
+                    text = "రాగాలయం",
                     color = TextMain,
                     style = MaterialTheme.typography.headlineMedium,
                     fontWeight = FontWeight.Bold
