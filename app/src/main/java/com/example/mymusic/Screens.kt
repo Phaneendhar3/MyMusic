@@ -88,7 +88,7 @@ fun SegmentedTabs(selected: Int, labels: List<String>, onSelect: (Int) -> Unit) 
 
 // One song in the list
 @Composable
-fun SongRow(song: Song, isCurrent: Boolean, onClick: () -> Unit) {
+fun SongRow(song: Song, isCurrent: Boolean, number:Int?=null, onClick: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -98,6 +98,17 @@ fun SongRow(song: Song, isCurrent: Boolean, onClick: () -> Unit) {
             .padding(8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
+        if(number!=null){
+            Text(
+                text=number.toString(),
+                color=if(isCurrent) Saffron else TextDim,
+                style=MaterialTheme.typography.bodyMedium,
+                fontWeight=FontWeight.Medium,
+                textAlign=TextAlign.Center,
+                maxLines=1,
+                modifier=Modifier.width(40.dp)
+            )
+        }
         AlbumArt(
             songId = song.id,
             sizePx = 160,
@@ -134,6 +145,7 @@ fun SongList(
     songs: List<Song>,
     currentSongId: Long?,
     listState: LazyListState,
+    showNumbers:Boolean=false,
     onSongClick: (Int) -> Unit
 ) {
     LazyColumn(
@@ -146,6 +158,7 @@ fun SongList(
             SongRow(
                 song = song,
                 isCurrent = song.id == currentSongId,
+                number=if(showNumbers) index+1 else null,
                 onClick = { onSongClick(index) }
             )
         }

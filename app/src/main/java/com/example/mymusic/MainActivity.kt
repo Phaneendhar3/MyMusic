@@ -348,7 +348,7 @@ fun MusicScreen() {
                         modifier = Modifier.align(Alignment.Center)
                     )
                 } else {
-                    SongList(shuffledSongs, currentSongId, shuffledListState) { index ->
+                    SongList(shuffledSongs, currentSongId, shuffledListState,showNumbers=true) { index ->
                         playFrom(shuffledSongs, MODE_SHUFFLED, index)
                     }
                 }
